@@ -74,25 +74,13 @@ public class BotPhotoNass extends TelegramLongPollingBot {
         String url = page.substring(startIndex + 6, endIndex - 1);
         int ExplanationBeginIndex1= page.lastIndexOf("Explanation");
         int ExplanationEndIndex1= page.lastIndexOf("hdurl");
-        String description=page.substring(ExplanationBeginIndex1+37,ExplanationEndIndex1-3);
+        String description=page.substring(ExplanationBeginIndex1+85,ExplanationEndIndex1-3);
         String responseToUser="The best photo of the day"+"\n"+url+"\n"+description;
 
         return responseToUser;
 
     }
 
-    String MarsUrlPhoto(){
-        String page = null;
-        try {
-            page = downLoadWebPage("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=2&api_key=DEMO_KEY");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        int startIndex = page.lastIndexOf("img_src");
-        int endIndex = page.lastIndexOf("earth_date");
-        String url = page.substring(startIndex+10,endIndex-3);
-        return url;
 
-    }
 
 }
