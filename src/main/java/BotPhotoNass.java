@@ -1,7 +1,5 @@
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
-import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
@@ -12,8 +10,6 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class BotPhotoNass extends TelegramLongPollingBot {
@@ -41,7 +37,7 @@ public class BotPhotoNass extends TelegramLongPollingBot {
         replyKeyboardMarkup.setOneTimeKeyboard(false);
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
         sendMessage.setChatId(message.getChatId().toString());
-        sendMessage.setText( NasaUrlPhoto());
+        sendMessage.setText( nasaUrlPhoto());
         try {
             execute(sendMessage);
         } catch (TelegramApiException e) {
@@ -62,7 +58,7 @@ public class BotPhotoNass extends TelegramLongPollingBot {
         }
     }
 
-    String NasaUrlPhoto(){
+    String nasaUrlPhoto(){
         String page = null;
         try {
             page = downLoadWebPage("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY");
