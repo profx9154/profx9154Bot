@@ -68,7 +68,7 @@ public class BotPhotoNass extends TelegramLongPollingBot {
         int startIndex = page.lastIndexOf("url");
         int endIndex = page.lastIndexOf("}");
         String url = page.substring(startIndex + 6, endIndex - 1);
-        int ExplanationBeginIndex1= page.lastIndexOf("Explanation");
+        int ExplanationBeginIndex1= page.lastIndexOf("Explanation!");
         int ExplanationEndIndex1= page.lastIndexOf("hdurl");
         String description=page.substring(ExplanationBeginIndex1+85,ExplanationEndIndex1-3);
         String responseToUser="The best photo of the day"+"\n"+url+"\n"+description;
